@@ -35,12 +35,5 @@ server.connection({
 server.register(Inert, function () {});
 server.route(routes);
 
-// server.start(function(err) {
-// 	if (err) {
-// 		throw err;
-// 	}
-// 	console.log('Server running at:', server.info.uri);
-// });
-
 module.exports = server;
 })();
