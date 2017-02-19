@@ -1,0 +1,8 @@
+.DS_Store
+npm-debug.log
+node_modules
+config.js
+src/assets/vendor
+app
+dist
+.vscode
