@@ -5,7 +5,6 @@ require('app-module-path').addPath('app');
 
 var Hapi = require('hapi');
 var Inert = require('inert');
-var Vision = require('vision');
 var server = new Hapi.Server();
 var routes = require('settings/routes');
 
@@ -17,14 +16,6 @@ server = new Hapi.Server({
             }
         }
     }
-});
-
-server.register(require('vision'), function(err) {
-	server.views({
-		engines: {
-			html: require('handlebars'),
-		}
-	});
 });
 
 server.connection({
