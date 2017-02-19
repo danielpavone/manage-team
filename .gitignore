@@ -3,6 +3,7 @@ npm-debug.log
 node_modules
 config.js
 src/assets/vendor
+src/settings/knexfile.js
 app
 dist
 .vscode
