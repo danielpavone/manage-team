@@ -25,6 +25,7 @@
   "homepage": "https://github.com/danielpavone/manage-team#readme",
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "bcryptjs": "^2.4.3",
     "grunt": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
