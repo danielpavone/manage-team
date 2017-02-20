@@ -3,6 +3,7 @@ npm-debug.log
 node_modules
 config.js
 src/settings/knexfile.js
+src/settings/config.js
 app
 dist
 .vscode

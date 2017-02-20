@@ -1,0 +1,20 @@
+(function(){
+    'use strict';
+
+    let config = {
+        jwt: {
+            key: 'SomeRandomString'
+        },
+        database: {
+            client: 'mysql',
+            connection: {
+                host: '',
+                user: '',
+                password: '',
+                database: '',
+                charset: ''
+            }
+        }
+    };
+    module.exports = config;
+})();

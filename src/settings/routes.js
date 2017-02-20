@@ -1,8 +1,8 @@
 (function(){
     'use strict';
-    const home = require('components/home/routes');
+    const user = require('components/user/routes');
 
     module.exports = [].concat(
-        home
+        user
     );
 })();
