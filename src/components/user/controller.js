@@ -2,10 +2,11 @@
     'use strict';
 
     module.exports.getAuth = getAuth;
-    var config = require('../../settings/config');
-    var Knex = require('knex')(config.database);
-    var jwt = require('jsonwebtoken');
-    var bcrypt = require('bcryptjs');
+    module.exports.getUsers = getUsers;
+    const config = require('../../settings/config');
+    const Knex = require('knex')(config.database);
+    const jwt = require('jsonwebtoken');
+    const bcrypt = require('bcryptjs');
 
     function getAuth(request, reply) {
         const {
@@ -39,6 +40,24 @@
             } else {
                 reply('Incorrect password');
             }
+        }).catch((err) => {
+            reply('server-side error');
+        });
+    }
+
+    function getUsers(request, reply) {
+        const getOperation = Knex('users').select('name').then((results) => {
+            if (!results || results.length === 0) {
+                reply({
+                    error: true,
+                    errMessage: 'Users not found'
+                });
+            }
+
+            reply({
+                dataCount: results.length,
+                data: results,
+            });
         }).catch((err) => {
             reply('server-side error');
         });

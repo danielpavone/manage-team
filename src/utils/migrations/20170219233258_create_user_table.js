@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         usersTable.string('username', 50).notNullable().unique();
         usersTable.string('email', 50).notNullable().unique();
         usersTable.string('password', 128).notNullable();
-        usersTable.string('guid', 50).notNullable().unique();
+        usersTable.boolean('admin', 50).notNullable().defaultTo(false);
         usersTable.timestamp('created_at').notNullable();
 
     });

@@ -12,14 +12,13 @@ exports.seed = function (knex, Promise) {
 					username: 'userone',
 					password: bcrypt.hashSync('123456', salt),
 					email: 'userone@example.com',
-					guid: 'f03ede7c-b121-4112-bcc7-130a3e87988c'
+					admin: true
 				},
 				{
 					name: 'User Two',
 					username: 'usertwo',
 					password: bcrypt.hashSync('123456', salt),
 					email: 'usertwo@example.com',
-					guid: 'f93gdy7c-b051-5302-bdb5-400n3e62044t'
 				}
 			]);
 		});
