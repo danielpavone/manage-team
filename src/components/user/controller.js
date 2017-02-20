@@ -1,14 +1,13 @@
 (function () {
     'use strict';
 
-    module.exports.getAuth = getAuth;
-    module.exports.getUsers = getUsers;
+    module.exports.post = post;
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
     const jwt = require('jsonwebtoken');
     const bcrypt = require('bcryptjs');
 
-    function getAuth(request, reply) {
+    function post(request, reply) {
         const {
             username,
             password
@@ -16,7 +15,7 @@
 
         const getOperation = Knex('users').where({
             username
-        }).select('guid', 'password').then(([user]) => {
+        }).select('admin', 'password').then(([user]) => {
             if (!user) {
                 reply({
                     error: true,
@@ -27,7 +26,7 @@
             if (user.password === bcrypt.hashSync(password, config.salt)) {
                 const token = jwt.sign({
                     username,
-                    scope: user.guid
+                    scope: user.admin ? 'admin' : 'user'
                 }, config.jwt.key, {
                     algorithm: 'HS256',
                     expiresIn: '1h'
@@ -35,7 +34,7 @@
 
                 reply({
                     token,
-                    scope: user.guid
+                    admin: user.admin
                 });
             } else {
                 reply('Incorrect password');
@@ -45,21 +44,4 @@
         });
     }
 
-    function getUsers(request, reply) {
-        const getOperation = Knex('users').select('name').then((results) => {
-            if (!results || results.length === 0) {
-                reply({
-                    error: true,
-                    errMessage: 'Users not found'
-                });
-            }
-
-            reply({
-                dataCount: results.length,
-                data: results,
-            });
-        }).catch((err) => {
-            reply('server-side error');
-        });
-    }
 })();

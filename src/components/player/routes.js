@@ -1,21 +1,24 @@
 (function () {
     'use strict';
+
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
     const controller = require('./controller');
     const Joi = require('joi');
 
     module.exports = [{
-        path: '/auth',
+        path: '/players',
+        method: 'GET',
+        handler: controller.get
+    }, {
+        path: '/players',
         method: 'POST',
         config: {
-            handler: controller.post,
-            validate: {
-                payload: {
-                    username: Joi.string().required(),
-                    password: Joi.string().required()
-                }
+            auth: {
+                strategy: 'token',
+                scope: ['admin']
             }
         },
+        handler: controller.post
     }];
 })();
