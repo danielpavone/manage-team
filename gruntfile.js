@@ -3,8 +3,12 @@ module.exports = function(grunt) {
 
     grunt.loadTasks('tasks/');
 
-    grunt.registerTask('dev', [
+    grunt.registerTask('start', [
         'clean:build',
+        'dev'
+    ]);
+
+    grunt.registerTask('dev', [
         'copy:hapi',
         'hapi:async',
         'watch'
