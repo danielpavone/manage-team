@@ -3,13 +3,13 @@
 
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
-    const controller = require('./controller');
+    const model = require('./model');
     const Joi = require('joi');
 
     module.exports = [{
         path: '/players',
         method: 'GET',
-        handler: controller.get
+        handler: model.get
     }, {
         path: '/players',
         method: 'POST',
@@ -19,7 +19,7 @@
                 scope: ['admin']
             }
         },
-        handler: controller.post
+        handler: model.post
     }, {
         path: '/players/{id}',
         method: 'PUT',
@@ -50,7 +50,7 @@
                     });
                 }
             }],
-            handler: controller.put
+            handler: model.put
         }
     }, {
         path: '/players/{id}',
@@ -82,7 +82,7 @@
                     });
                 }
             }],
-            handler: controller.del
+            handler: model.del
         }
     }];
 })();

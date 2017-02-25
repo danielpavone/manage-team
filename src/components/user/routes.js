@@ -2,14 +2,14 @@
     'use strict';
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
-    const controller = require('./controller');
+    const model = require('./model');
     const Joi = require('joi');
 
     module.exports = [{
         path: '/auth',
         method: 'POST',
         config: {
-            handler: controller.post,
+            handler: model.post,
             validate: {
                 payload: {
                     username: Joi.string().required(),
