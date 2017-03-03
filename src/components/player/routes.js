@@ -11,6 +11,10 @@
         method: 'GET',
         handler: model.get
     }, {
+        path: '/players/{id}',
+        method: 'GET',
+        handler: model.getOne
+    },{
         path: '/players',
         method: 'POST',
         config: {
@@ -30,12 +34,7 @@
             },
             pre: [{
                 method: (request, reply) => {
-                    const {
-                        id
-                    } = request.params;
-                    const {
-                        scope
-                    } = request.auth.credentials;
+                    const { id } = request.params;
 
                     const getOperation = Knex('players').where({
                         id: id,
@@ -65,9 +64,6 @@
                     const {
                         id
                     } = request.params;
-                    const {
-                        scope
-                    } = request.auth.credentials;
 
                     const getOperation = Knex('players').where({
                         id: id,

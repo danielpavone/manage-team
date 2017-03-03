@@ -3,6 +3,7 @@ npm-debug.log
 node_modules
 config.js
 src/settings/config.js
+src/settings/config.tlp
 app
 dist
 .vscode

@@ -2,46 +2,110 @@
     'use strict';
 
     module.exports.post = post;
+    module.exports.get = get;
+    module.exports.put = put;
+    module.exports.del = del;
+    module.exports.getOne = getOne;
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
-    const jwt = require('jsonwebtoken');
-    const bcrypt = require('bcryptjs');
 
     function post(request, reply) {
         const {
-            username,
-            password
+            player
         } = request.payload;
 
-        const getOperation = Knex('users').where({
-            username
-        }).select('admin', 'password').then(([user]) => {
-            if (!user) {
-                reply({
-                    error: true,
-                    errMessage: 'the specified user was not found'
-                });
-                return;
-            }
-            if (user.password === bcrypt.hashSync(password, config.salt)) {
-                const token = jwt.sign({
-                    username,
-                    scope: user.admin ? 'admin' : 'user'
-                }, config.jwt.key, {
-                    algorithm: 'HS256',
-                    expiresIn: '1h'
-                });
-
-                reply({
-                    token,
-                    admin: user.admin
-                });
-            } else {
-                reply('Incorrect password');
-            }
+        const insertOperations = Knex('players').insert({
+            name: player.name,
+            last_name: player.last_name,
+            position: player.position,
+            number: player.number,
+            goals: player.goals,
+            birth: player.birth
+        }).then((res) => {
+            reply({
+                message: 'Successfully created player'
+            });
         }).catch((err) => {
             reply('server-side error');
         });
     }
 
+    function get(request, reply) {
+        const getOperation = Knex('players').select('name', 'last_name', 'position', 'goals', 'birth').then((results) => {
+            if (!results || results.length === 0) {
+                reply({
+                    error: true,
+                    errMessage: 'Players not found'
+                });
+            }
+
+            reply({
+                dataCount: results.length,
+                data: results,
+            });
+        }).catch((err) => {
+            reply('server-side error');
+        });
+    }
+
+    function getOne(request, reply) {
+        const {id} = request.params;
+        const getOperation = Knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id: id}).then((results) => {
+            if (!results || results.length === 0) {
+                reply({
+                    error: true,
+                    errMessage: 'Player not found'
+                });
+                return;
+            }
+
+            reply({
+                data: results,
+            });
+        }).catch((err) => {
+            reply('server-side error');
+        });
+    }
+
+    function put(request, reply) {
+        const {
+            id
+        } = request.params;
+        const {
+            player
+        } = request.payload;
+
+        const insertOperation = Knex('players').where({
+            id: id
+        }).update({
+            name: player.name,
+            last_name: player.last_name,
+            position: player.position,
+            number: player.number,
+            goals: player.goals,
+            birth: player.birth
+        }).then((res) => {
+            reply({
+                message: 'Successfully updated player'
+            });
+        }).catch((err) => {
+            reply('server-side error');
+        });
+    }
+
+    function del(request, reply) {
+        const {
+            id
+        } = request.params;
+
+        const removeOperation = Knex('players').where({
+            id: id
+        }).del().then((res) => {
+            reply({
+                message: 'Successfully deleted player'
+            });
+        }).catch((err) => {
+            reply('server-side error');
+        });
+    }
 })();

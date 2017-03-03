@@ -1,46 +1,43 @@
 {
-    "name": "manage-team",
-    "version": "1.0.0",
-    "description": "A system to manage my team",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/danielpavone/manage-team.git"
-    },
-    "keywords": [
-        "team",
-        "football",
-        "angularjs",
-        "hapijs",
-        "node"
-    ],
-    "author": "Daniel Pavone",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/danielpavone/manage-team/issues"
-    },
-    "homepage": "https://github.com/danielpavone/manage-team#readme",
-    "dependencies": {
-        "app-module-path": "^2.2.0",
-        "bcryptjs": "^2.4.3",
-        "grunt": "^1.0.1",
-        "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-watch": "^1.0.0",
-        "grunt-contrib-clean": "^1.0.0",
-        "grunt-hapi": "^0.12.0",
-        "handlebars": "^4.0.6",
-        "hapi": "^16.1.0",
-        "hapi-auth-jwt": "^4.0.0",
-        "joi": "^10.2.2",
-        "jsonwebtoken": "^7.3.0",
-        "knex": "^0.12.7",
-        "mysql": "^2.13.0",
-        "node-uuid": "^1.4.7"
-    },
-    "devDependencies": {
-
-    }
+  "name": "manage-team",
+  "version": "1.0.0",
+  "description": "A system to manage my team",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielpavone/manage-team.git"
+  },
+  "keywords": [
+    "team",
+    "football",
+    "angularjs",
+    "hapijs",
+    "node"
+  ],
+  "author": "Daniel Pavone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielpavone/manage-team/issues"
+  },
+  "homepage": "https://github.com/danielpavone/manage-team#readme",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "bcryptjs": "^2.4.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-hapi": "^0.12.0",
+    "handlebars": "^4.0.6",
+    "hapi": "^16.1.0",
+    "hapi-auth-jwt": "^4.0.0",
+    "joi": "^10.2.2",
+    "jsonwebtoken": "^7.3.0",
+    "knex": "^0.12.7",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {}
 }
