@@ -4,6 +4,7 @@
     const Knex = require('knex')(config.database);
     const model = require('./model');
     const Joi = require('joi');
+    const Boom = require('boom');
 
     module.exports = [{
         path: '/auth',
@@ -17,5 +18,13 @@
                 }
             }
         },
+    }, {
+        path: '/auth',
+        method: 'GET',
+        config: {
+            handler: (request, reply) => {
+                reply('It Works!');
+            }
+        }
     }];
 })();

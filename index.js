@@ -24,5 +24,11 @@
         });
         server.route(routes);
     });
+
+    if(!module.parent) {
+        server.start(error => {
+            process.exit(1);
+        });
+    }
     module.exports = server;
 })();

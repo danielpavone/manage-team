@@ -4,6 +4,7 @@
   "description": "A system to manage my team",
   "main": "index.js",
   "scripts": {
+    "test": "lab -r console",
     "start": "node index.js"
   },
   "repository": {
@@ -26,6 +27,7 @@
   "dependencies": {
     "app-module-path": "^2.2.0",
     "bcryptjs": "^2.4.3",
+    "boom": "^4.2.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
@@ -39,5 +41,8 @@
     "knex": "^0.12.7",
     "mysql": "^2.13.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "code": "^4.0.0",
+    "lab": "^12.1.0"
+  }
 }
