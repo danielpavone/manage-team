@@ -94,7 +94,7 @@
         } = request.params;
 
         const removeOperation = Knex('players').where({
-            id: id
+            id
         }).del().then((res) => {
             reply({
                 message: 'Successfully deleted player'
