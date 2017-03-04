@@ -11,7 +11,7 @@
 
         const insertOperations = Knex('players').insert({
             name: player.name,
-            last_name: player.last_name,
+            lastName: player.last_name,
             position: player.position,
             number: player.number,
             goals: player.goals,
@@ -110,4 +110,4 @@
     module.exports.del = del;
     module.exports.getOne = getOne;
     
-})();
+}());

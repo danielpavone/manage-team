@@ -26,7 +26,7 @@
     });
 
     if(!module.parent) {
-        server.start(error => {
+        server.start((error) => {
             process.exit(1);
         });
     }

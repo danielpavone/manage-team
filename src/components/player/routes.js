@@ -68,7 +68,7 @@
                     } = request.params;
 
                     const getOperation = Knex('players').where({
-                        id: id,
+                        id: id
                     }).then(([result]) => {
                         if (!result) {
                             reply({
@@ -83,4 +83,4 @@
             handler: model.del
         }
     }];
-})();
+}());
