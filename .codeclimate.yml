@@ -1,11 +1,6 @@
-engines:
-  eslint:
+engines: 
+  eslint: 
     enabled: true
-  duplication:
-    enabled: true
-  config:
-    languages:
-    - javascript
-ratings:
-   paths:
-   - "test/*"
+ratings: 
+  paths: 
+    - test/*
