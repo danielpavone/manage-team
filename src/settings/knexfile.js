@@ -15,4 +15,4 @@
         connection: database.connection
     };
     module.exports = development;
-})();
+}());

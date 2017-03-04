@@ -45,7 +45,7 @@
 
     function getOne(request, reply) {
         const {id} = request.params;
-        const getOperation = Knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id: id}).then((results) => {
+        const getOperation = Knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id}).then((results) => {
             if (!results || results.length === 0) {
                 reply({
                     error: true,
@@ -71,7 +71,7 @@
         } = request.payload;
 
         const insertOperation = Knex('players').where({
-            id: id
+            id
         }).update({
             name: player.name,
             last_name: player.last_name,

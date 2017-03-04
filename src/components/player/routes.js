@@ -39,7 +39,7 @@
                     } = request.params;
 
                     const getOperation = Knex('players').where({
-                        id: id,
+                        id,
                     }).then(([result]) => {
                         if (!result) {
                             reply({
@@ -63,12 +63,10 @@
             },
             pre: [{
                 method: (request, reply) => {
-                    const {
-                        id
-                    } = request.params;
+                    const { id } = request.params;
 
                     const getOperation = Knex('players').where({
-                        id: id
+                        id
                     }).then(([result]) => {
                         if (!result) {
                             reply({
