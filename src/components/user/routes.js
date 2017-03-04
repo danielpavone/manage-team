@@ -17,7 +17,7 @@
                     password: Joi.string().required()
                 }
             }
-        },
+        }
     }, {
         path: '/auth',
         method: 'GET',
