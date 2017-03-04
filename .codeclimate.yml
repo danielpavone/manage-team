@@ -5,7 +5,7 @@ engines:
   	enabled: true
     config:
     	languages:
-      - javascript
+        - javascript
 ratings:
   paths:
   - app/**
