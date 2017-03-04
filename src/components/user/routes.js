@@ -1,7 +1,6 @@
 (function () {
     'use strict';
     const config = require('../../settings/config');
-    const Knex = require('knex')(config.database);
     const model = require('./model');
     const Joi = require('joi');
     const Boom = require('boom');

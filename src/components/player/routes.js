@@ -2,7 +2,7 @@
     'use strict';
 
     const config = require('../../settings/config');
-    const Knex = require('knex')(config.database);
+    const knex = require('knex')(config.database);
     const model = require('./model');
     const Joi = require('joi');
 
@@ -38,7 +38,7 @@
                         id
                     } = request.params;
 
-                    const getOperation = Knex('players').where({
+                    const getOperation = knex('players').where({
                         id
                     }).then(([result]) => {
                         if (!result) {
@@ -65,7 +65,7 @@
                 method: (request, reply) => {
                     const { id } = request.params;
 
-                    const getOperation = Knex('players').where({
+                    const getOperation = knex('players').where({
                         id
                     }).then(([result]) => {
                         if (!result) {

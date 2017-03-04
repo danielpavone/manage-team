@@ -2,14 +2,12 @@
     'use strict';
 
     const config = require('../../settings/config');
-    const Knex = require('knex')(config.database);
+    const knex = require('knex')(config.database);
 
     function post(request, reply) {
-        const {
-            player
-        } = request.payload;
+        const { player } = request.payload;
 
-        const insertOperations = Knex('players').insert({
+        const insertOperations = knex('players').insert({
             name: player.name,
             lastName: player.last_name,
             position: player.position,
@@ -26,7 +24,7 @@
     }
 
     function get(request, reply) {
-        const getOperation = Knex('players').select('name', 'last_name', 'position', 'goals', 'birth').then((results) => {
+        const getOperation = knex('players').select('name', 'last_name', 'position', 'goals', 'birth').then((results) => {
             if (!results || results.length === 0) {
                 reply({
                     error: true,
@@ -36,7 +34,7 @@
 
             reply({
                 dataCount: results.length,
-                data: results,
+                data: results
             });
         }).catch((err) => {
             reply('server-side error');
@@ -45,7 +43,7 @@
 
     function getOne(request, reply) {
         const {id} = request.params;
-        const getOperation = Knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id}).then((results) => {
+        const getOperation = knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id}).then((results) => {
             if (!results || results.length === 0) {
                 reply({
                     error: true,
@@ -55,7 +53,7 @@
             }
 
             reply({
-                data: results,
+                data: results
             });
         }).catch((err) => {
             reply('server-side error');
@@ -63,18 +61,14 @@
     }
 
     function put(request, reply) {
-        const {
-            id
-        } = request.params;
-        const {
-            player
-        } = request.payload;
+        const { id } = request.params;
+        const { player } = request.payload;
 
-        const insertOperation = Knex('players').where({
+        const insertOperation = knex('players').where({
             id
         }).update({
             name: player.name,
-            last_name: player.last_name,
+            lastName: player.last_name,
             position: player.position,
             number: player.number,
             goals: player.goals,
@@ -89,11 +83,9 @@
     }
 
     function del(request, reply) {
-        const {
-            id
-        } = request.params;
+        const { id } = request.params;
 
-        const removeOperation = Knex('players').where({
+        const removeOperation = knex('players').where({
             id
         }).del().then((res) => {
             reply({
