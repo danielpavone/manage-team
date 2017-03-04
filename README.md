@@ -1,1 +1,3 @@
 [![Code Climate](https://codeclimate.com/github/danielpavone/manage-team/badges/gpa.svg)](https://codeclimate.com/github/danielpavone/manage-team)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2a387eb3b38d4d69829e79dfe9b34b33)](https://www.codacy.com/app/danielpavone/manage-team?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=danielpavone/manage-team&amp;utm_campaign=Badge_Grade)
