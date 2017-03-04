@@ -4,7 +4,7 @@
   "description": "A system to manage my team",
   "main": "index.js",
   "scripts": {
-    "test": "lab -r console",
+    "test": "lab -c",
     "start": "node index.js"
   },
   "repository": {

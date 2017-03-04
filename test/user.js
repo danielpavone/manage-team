@@ -5,10 +5,12 @@
     const lab = exports.lab = Lab.script();
     var Code = require('code');
     var server = require('../index');
+    const it = lab.test;
+    const describe = lab.experiment;
 
-    lab.experiment('Basic HTTP Tests', () => {
+    describe('/POST user', () => {
 
-        lab.test('POST /auth (endpoint test)', (done) => {
+        it('POST /auth (endpoint test)', (done) => {
             let options = {
                 method: 'POST',
                 url: '/auth'
@@ -20,7 +22,7 @@
             });
         });
 
-        lab.test('POST /auth failed', (done) => {
+        it('POST /auth failed', (done) => {
             let options = {
                 method: 'POST',
                 url: '/auth',
@@ -36,7 +38,7 @@
             });
         });
 
-        lab.test('POST /auth loading', (done) => {
+        it('POST /auth login', (done) => {
             let options = {
                 method: 'POST',
                 url: '/auth',
@@ -48,11 +50,16 @@
 
             server.inject(options, (response) => {
                 Code.expect(response.statusCode).to.equal(200);
+                Code.expect(response.result).to.be.an.object();
+                Code.expect(response.result.admin).to.be.a.number();
+                Code.expect(response.result).to.have.length(2);
                 server.stop(done);
             });
         });
+    });
 
-        lab.test('GET /auth show page with status 200', (done) => {
+    describe('/GET user', () => {
+        it('it should get \'It Works!\'', (done) => {
             let options = {
                 method: 'GET',
                 url: '/auth'
