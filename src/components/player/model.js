@@ -1,11 +1,6 @@
 (function () {
     'use strict';
 
-    module.exports.post = post;
-    module.exports.get = get;
-    module.exports.put = put;
-    module.exports.del = del;
-    module.exports.getOne = getOne;
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
 
@@ -108,4 +103,11 @@
             reply('server-side error');
         });
     }
+
+    module.exports.post = post;
+    module.exports.get = get;
+    module.exports.put = put;
+    module.exports.del = del;
+    module.exports.getOne = getOne;
+    
 })();

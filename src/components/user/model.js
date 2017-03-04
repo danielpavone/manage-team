@@ -1,7 +1,6 @@
 (function () {
     'use strict';
 
-    module.exports.post = post;
     const config = require('../../settings/config');
     const Knex = require('knex')(config.database);
     const jwt = require('jsonwebtoken');
@@ -39,4 +38,5 @@
         });
     }
 
+    module.exports.post = post;
 })();
