@@ -57,7 +57,7 @@
                 Code.expect(response.result).to.be.an.object();
                 Code.expect(response.result.admin).to.exist();
                 Code.expect(response.result.token).to.exist();
-                Code.expect(response.result.admin).to.be.a.number();
+                Code.expect(response.result.admin).to.be.a.boolean();
                 Code.expect(response.result.token).to.be.a.string();
                 Code.expect(response.result).to.have.length(2);
                 server.stop(done);

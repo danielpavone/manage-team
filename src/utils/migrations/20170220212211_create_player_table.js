@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
 
         //Data
         playersTable.string('name', 50).notNullable();
-        playersTable.string('last_name', 50).notNullable();
+        playersTable.string('lastName', 50).notNullable();
         playersTable.string('position', 20).notNullable();
         playersTable.integer('number').notNullable();
         playersTable.integer('goals').notNullable();
@@ -16,6 +16,6 @@ exports.up = function (knex, Promise) {
 
 exports.down = function (knex, Promise) {
 
-    return knex.schema.dropTableIfExists('users');
+    return knex.schema.dropTableIfExists('players');
 
 };

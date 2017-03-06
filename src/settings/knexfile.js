@@ -11,8 +11,9 @@
             directory: __dirname + '/../utils/seeds/',
             tableName: '../utils/seeds/'
         },
-        client: 'mysql',
+        client: database.client,
         connection: database.connection
     };
+
     module.exports = development;
 }());

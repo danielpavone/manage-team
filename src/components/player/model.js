@@ -3,6 +3,7 @@
 
     const config = require('../../settings/config');
     const knex = require('knex')(config.database);
+    const Boom = require('boom');
 
     function post(request, reply) {
         const { player } = request.payload;
@@ -37,7 +38,7 @@
                 data: results
             });
         }).catch((err) => {
-            reply('server-side error');
+            reply(Boom.badImplementation());
         });
     }
 
