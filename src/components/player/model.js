@@ -25,7 +25,7 @@
     }
 
     function get(request, reply) {
-        const getOperation = knex('players').select('name', 'last_name', 'position', 'goals', 'birth').then((results) => {
+        const getOperation = knex('players').select('name', 'lastName', 'position', 'goals', 'birth').then((results) => {
             if (!results || results.length === 0) {
                 reply({
                     error: true,
@@ -44,7 +44,7 @@
 
     function getOne(request, reply) {
         const {id} = request.params;
-        const getOperation = knex('players').first('name', 'last_name', 'position', 'goals', 'birth').where({id}).then((results) => {
+        const getOperation = knex('players').first('name', 'lastName', 'position', 'goals', 'birth').where({id}).then((results) => {
             if (!results || results.length === 0) {
                 reply({
                     error: true,

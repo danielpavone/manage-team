@@ -12,7 +12,7 @@
 
     server.connection({
         host: '0.0.0.0',
-        port: process.env.PORT || 3000
+        port: 3000
     });
 
     server.register(jwt, (err) => {
@@ -25,10 +25,5 @@
         server.route(routes);
     });
 
-    if(!module.parent) {
-        server.start((error) => {
-            process.exit(1);
-        });
-    }
     module.exports = server;
 }());

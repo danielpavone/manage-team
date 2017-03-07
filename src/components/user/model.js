@@ -20,7 +20,7 @@
             if (user.password === bcrypt.hashSync(password, config.salt)) {
                 const token = jwt.sign({
                     username,
-                    scope: user.admin ? 'admin' : 'user'
+                    scope: user.admin
                 }, config.jwt.key, {
                     algorithm: 'HS256',
                     expiresIn: '1h'

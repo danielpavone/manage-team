@@ -7,6 +7,7 @@
     var server = require('../index');
     const it = lab.test;
     const describe = lab.experiment;
+    const knex = require('../utils/knex');
 
     describe('/POST user', () => {
 
@@ -22,7 +23,27 @@
             });
         });
 
-        it('POST /auth should fail', (done) => {
+        it('POST /auth password should be invalid', (done) => {
+            let options = {
+                method: 'POST',
+                url: '/auth',
+                payload: {
+                    username: 'userone',
+                    password: 'bar'
+                }
+            };
+
+            server.inject(options, (response) => {
+                Code.expect(response.statusCode).to.equal(400);
+                Code.expect(response.result).to.be.an.object();
+                Code.expect(response.result).to.have.length(3);
+                Code.expect(response.result.error).to.equal('Bad Request');
+                Code.expect(response.result.message).to.equal('Incorrect Password');
+                server.stop(done);
+            });
+        });
+
+        it('POST /auth username should be invalid', (done) => {
             let options = {
                 method: 'POST',
                 url: '/auth',
@@ -66,6 +87,7 @@
     });
 
     describe('/GET user', () => {
+
         it('it should get \'It Works!\'', (done) => {
             let options = {
                 method: 'GET',

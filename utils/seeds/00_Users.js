@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const salt = require('../../settings/config').salt;
+const salt = require('../../src/settings/config').salt;
 
 exports.seed = function (knex, Promise) {
 	// Deletes ALL existing entries
