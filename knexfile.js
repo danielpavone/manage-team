@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    let database = require(__dirname + '/src/settings/config').database;
+    let database = require('./src/settings/config').database;
     let development = {
         migrations: {
             directory: __dirname + '/utils/migrations/',
